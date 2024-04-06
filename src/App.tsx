@@ -1,6 +1,8 @@
 import "./sass/main.scss";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import Employees from "./pages/employees/Employees";
 
 function App() {
 
@@ -16,7 +18,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout>Home</Layout>
+      element: <Layout><Outlet /></Layout>,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/employees", element: <Employees /> }
+      ]
     }
   ])
 

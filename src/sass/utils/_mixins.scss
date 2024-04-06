@@ -1,0 +1,18 @@
+@mixin btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: .5rem;
+  font-size: clamp(1.8rem, 2vw, 2rem);
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: .1rem;
+  color: $color-secondary;
+  background-color: $color-light;
+  border: 1px solid $color-secondary;
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
+  &:hover {
+    color: $color-primary;
+    background-color: $color-secondary;
+  }
+}

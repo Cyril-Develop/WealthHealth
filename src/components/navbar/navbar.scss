@@ -1,0 +1,52 @@
+@import "../../sass/main.scss";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 10rem;
+  padding: 2rem 4rem;
+  background-color: $color-secondary;
+  color: $color-light;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: clamp(1.8rem, 2vw, 2rem);
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 2vw, 2rem);
+  }
+
+  img {
+    height: 100%;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    li a {
+      &:hover span::before {
+        width: 100%;
+      }
+      span {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -0.5rem;
+          left: 0;
+          width: 0;
+          height: 0.2rem;
+          background-color: $color-primary;
+          transition: width 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}
