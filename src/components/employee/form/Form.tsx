@@ -1,9 +1,10 @@
 import "./form.scss";
 import Modal from "../../modal/Modal";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 const Form = () => {
-
   const [toggleModal, setToggleModal] = useState(false);
 
   const closeModal = () => {
@@ -79,7 +80,8 @@ const Form = () => {
       </div>
 
       <button type="submit" className="form_btn" onClick={handleSubmit}>
-        Save
+        <FontAwesomeIcon icon={faFloppyDisk} />
+        <span>Save</span>
       </button>
       {toggleModal && <Modal closeModal={closeModal} />}
     </form>

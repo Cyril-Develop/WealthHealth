@@ -1,16 +1,15 @@
 @import "../../sass/main.scss";
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  //direction, justify, align, gap
+  @include flex(row, space-between, null, null);
   height: 10rem;
   padding: 2rem 4rem;
   background-color: $color-secondary;
   color: $color-light;
 
   a {
-    display: flex;
-    align-items: center;
+    @include flex(row, null, center, null);
     gap: 1rem;
     font-weight: bold;
     font-size: clamp(1.8rem, 2vw, 2rem);
@@ -25,9 +24,7 @@
   }
 
   ul {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
+    @include flex(row, null, center, 4rem);
 
     li a {
       &:hover span::before {

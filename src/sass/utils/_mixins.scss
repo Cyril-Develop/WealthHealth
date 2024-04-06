@@ -1,5 +1,4 @@
 @mixin btn {
-  display: inline-block;
   padding: 10px 20px;
   border-radius: .5rem;
   font-size: clamp(1.8rem, 2vw, 2rem);
@@ -14,5 +13,21 @@
   &:hover {
     color: $color-primary;
     background-color: $color-secondary;
+  }
+}
+
+@mixin flex($direction: row, $justify: null, $align: null, $gap: null) {
+  display: flex;
+  @if $direction != row {
+    flex-direction: $direction;
+  }
+  @if $justify != null {
+    justify-content: $justify;
+  }
+  @if $align != null {
+    align-items: $align;
+  }
+  @if $gap != null {
+    gap: $gap;
   }
 }

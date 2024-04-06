@@ -47,6 +47,8 @@
     font-size: clamp(2rem, 2.5vw, 2.5rem);
   }
   &_btn {
+    display: flex;
+    gap: 1rem;
     @include btn;
   }
 }

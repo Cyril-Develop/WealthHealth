@@ -1,8 +1,8 @@
 @import "../../sass/main.scss";
 
 .home{
-  display: flex;
-  justify-content: center;
+   //direction, justify, align, gap
+  @include flex(row, center, null, null);
   padding: 4rem;
   min-height: calc(100vh - 10rem);
 }

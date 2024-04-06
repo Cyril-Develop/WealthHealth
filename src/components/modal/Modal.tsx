@@ -14,10 +14,11 @@ const Modal = ({ closeModal }: ModalProps) => {
           type="button"
           className="modal_wrapper_content_btn"
           onClick={closeModal}
+          aria-label="Close modal"
         >
           <FontAwesomeIcon icon={faClose} />
         </button>
-        <p>Employee Created!</p>
+        <h2>Employee Created!</h2>
       </div>
     </div>
   );
