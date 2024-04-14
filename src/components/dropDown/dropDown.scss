@@ -1,0 +1,45 @@
+@import "../../sass/main.scss";
+
+.dropDown {
+  &_wrapper {
+    position: absolute;
+    border: 1px solid $color-dark;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    font-size: clamp(1.6rem, 1.8vw, 1.8rem);
+
+    &_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      height: 4rem;
+      padding: 0 1rem;
+      cursor: pointer;
+      background-color: $color-light;
+
+      &:hover {
+        background-color: #157846;
+        color: $color-light;
+      }
+    }
+
+    &_content {
+      background-color: $color-light;
+
+      &_item {
+        height: 4rem;
+        line-height: 4rem;
+        padding: 0 1rem;
+        cursor: pointer;
+        &:hover {
+          background-color: #157846;
+          color: $color-light;
+        }
+      }
+    }
+  }
+  .hidden {
+    height: 4rem;
+  }
+}

@@ -3,13 +3,12 @@
   border-radius: .5rem;
   font-size: clamp(1.8rem, 2vw, 2rem);
   font-weight: bold;
-  text-align: center;
+  margin: 0 auto;
   letter-spacing: .1rem;
   color: $color-secondary;
   background-color: $color-light;
-  border: 1px solid $color-secondary;
+  border: 1px solid $color-dark;
   cursor: pointer;
-  transition: background-color .2s, color .2s;
   &:hover {
     color: $color-primary;
     background-color: $color-secondary;

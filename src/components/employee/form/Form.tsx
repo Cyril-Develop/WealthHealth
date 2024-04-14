@@ -3,6 +3,7 @@ import Modal from "../../modal/Modal";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import DropDown from "../../dropDown/DropDown";
 
 const Form = () => {
   const [toggleModal, setToggleModal] = useState(false);
@@ -69,7 +70,7 @@ const Form = () => {
         </div>
       </fieldset>
 
-      <div className="form_group">
+      {/* <div className="form_group">
         <label htmlFor="department">Department</label>
         <select id="department">
           <option value="engineering">Engineering</option>
@@ -77,7 +78,9 @@ const Form = () => {
           <option value="sales">Sales</option>
           <option value="hr">Human Resources</option>
         </select>
-      </div>
+      </div> */}
+
+      <DropDown />
 
       <button type="submit" className="form_btn" onClick={handleSubmit}>
         <FontAwesomeIcon icon={faFloppyDisk} />

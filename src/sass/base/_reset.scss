@@ -6,10 +6,17 @@
   box-sizing: border-box;
 }
 
+
 html{
   font-size: 62.5%;
-  background-color: $color-primary;
+  background-color: $color-light;
   font-family: "Montserrat", sans-serif;
+}
+
+#root{
+  max-width: 2500px;
+  margin: 0 auto;
+  background-color: $color-primary;
 }
 
 li{
