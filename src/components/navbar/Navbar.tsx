@@ -15,7 +15,7 @@ const Navbar = () => {
         <li>
           <Link to="/">
             <FontAwesomeIcon icon={faPlus} />
-            <span>Create employee</span>
+            <span>Add employee</span>
           </Link>
         </li>
         <li>
