@@ -13,7 +13,8 @@ const Form = () => {
   };
 
   //****************Form Validation
-  const [formData, setFormData] = useState({
+
+  const initialFormState = {
     firstname: "",
     lastname: "",
     dateBirth: "",
@@ -23,7 +24,9 @@ const Form = () => {
     state: "",
     zip: "",
     department: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormState);
 
   const [errors, setErrors] = useState<FormErrors>({});
   //const [submitted, setSubmitted] = useState(false);
@@ -108,19 +111,20 @@ const Form = () => {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (validateForm()) {
       //setSubmitted(true);
       setToggleModal(true);
+      setFormData(initialFormState);
     }
   };
 
   //const isFormValid = Object.keys(errors).length === 0;
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <fieldset>
         <legend className="form_legend">Personal Information</legend>
 
@@ -228,7 +232,7 @@ const Form = () => {
         </div>
       </fieldset>
       <DropDown />
-      <button type="submit" className="form_btn" onClick={handleSubmit}>
+      <button type="submit" className="form_btn">
         <FontAwesomeIcon icon={faFloppyDisk} />
         <span>Save</span>
       </button>
