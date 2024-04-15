@@ -26,7 +26,7 @@ const Form = () => {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  //const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: {
     target: { name: string; value: string };
@@ -112,14 +112,13 @@ const Form = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      setSubmitted(true);
+      //setSubmitted(true);
       setToggleModal(true);
     }
   };
 
-  const isFormValid = Object.keys(errors).length === 0;
+  //const isFormValid = Object.keys(errors).length === 0;
 
-  console.log(errors);
   return (
     <form className="form">
       <fieldset>
