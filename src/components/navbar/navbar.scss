@@ -8,6 +8,10 @@
   background-color: $color-secondary;
   color: $color-light;
 
+  @include small-screen {
+    padding: 2rem 1rem;
+  }
+
   a {
     @include flex(row, null, center, null);
     gap: 1rem;
@@ -26,12 +30,20 @@
   ul {
     @include flex(row, null, center, 4rem);
 
+    @include small-screen {
+      gap: 2rem;
+    }
+
     li a {
       &:hover span::before {
         width: 100%;
       }
       span {
         position: relative;
+
+        @include medium-screen {
+          display: none;
+        }
 
         &::before {
           content: "";
@@ -41,7 +53,7 @@
           width: 0;
           height: 0.2rem;
           background-color: $color-primary;
-          transition: width .1s ease-in-out;
+          transition: width 0.1s ease-in-out;
         }
       }
     }

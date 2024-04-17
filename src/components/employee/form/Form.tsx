@@ -4,16 +4,19 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import DropDown from "../../dropDown/DropDown";
+import ListDepartment from "../../../data/list.department";
+import ListState from "../../../data/list.state";
 
 const Form = () => {
   const [toggleModal, setToggleModal] = useState(false);
+  const [state, setState] = useState("");
+  const [department, setDepartment] = useState("");
 
   const closeModal = () => {
     setToggleModal(false);
   };
 
-  //****************Form Validation
-
+  //****************Form Validation****************//
   const initialFormState = {
     firstname: "",
     lastname: "",
@@ -21,15 +24,12 @@ const Form = () => {
     startDate: "",
     street: "",
     city: "",
-    state: "",
     zip: "",
-    department: "",
   };
 
   const [formData, setFormData] = useState(initialFormState);
 
   const [errors, setErrors] = useState<FormErrors>({});
-  //const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: {
     target: { name: string; value: string };
@@ -42,7 +42,6 @@ const Form = () => {
     });
   };
 
-  // Définir un type pour les erreurs
   type FormErrors = {
     firstname?: string;
     lastname?: string;
@@ -96,7 +95,7 @@ const Form = () => {
     }
 
     // Validate state
-    if (!formData.state) {
+    if (!state) {
       newErrors.state = "State is required";
       isValid = false;
     }
@@ -104,6 +103,11 @@ const Form = () => {
     // Validate zip
     if (!formData.zip) {
       newErrors.zip = "Zip is required";
+      isValid = false;
+    }
+
+    if (!department) {
+      newErrors.department = "Department is required";
       isValid = false;
     }
 
@@ -115,13 +119,12 @@ const Form = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      //setSubmitted(true);
-      setToggleModal(true);
       setFormData(initialFormState);
+      setState("");
+      setDepartment("");
+      setToggleModal(true);
     }
   };
-
-  //const isFormValid = Object.keys(errors).length === 0;
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -129,7 +132,7 @@ const Form = () => {
         <legend className="form_legend">Personal Information</legend>
 
         <div className="form_group">
-          <div>
+          <div className="form_group_control">
             <label htmlFor="firstname">First name *</label>
             <input
               type="text"
@@ -140,7 +143,7 @@ const Form = () => {
             />
             {errors.firstname && <p className="error">{errors.firstname}</p>}
           </div>
-          <div>
+          <div className="form_group_control">
             <label htmlFor="lastname">Last name *</label>
             <input
               type="text"
@@ -153,7 +156,7 @@ const Form = () => {
           </div>
         </div>
         <div className="form_group">
-          <div>
+          <div className="form_group_control">
             <label htmlFor="dateBirth">Date of Birth *</label>
             <input
               type="date"
@@ -164,7 +167,7 @@ const Form = () => {
             />
             {errors.dateBirth && <p className="error">{errors.dateBirth}</p>}
           </div>
-          <div>
+          <div className="form_group_control">
             <label htmlFor="startDate">Start Date *</label>
             <input
               type="date"
@@ -182,7 +185,7 @@ const Form = () => {
         <legend className="form_legend">Address</legend>
 
         <div className="form_group">
-          <div>
+          <div className="form_group_control">
             <label htmlFor="street">Street *</label>
             <input
               type="text"
@@ -193,7 +196,7 @@ const Form = () => {
             />
             {errors.street && <p className="error">{errors.street}</p>}
           </div>
-          <div>
+          <div className="form_group_control">
             <label htmlFor="city">City *</label>
             <input
               type="text"
@@ -207,21 +210,19 @@ const Form = () => {
         </div>
 
         <div className="form_group">
-          <div>
-            <label htmlFor="state">State *</label>
-            <input
-              type="text"
-              id="state"
-              name="state"
-              onChange={handleInputChange}
-              value={formData.state}
+          <div className="drop">
+            <label aria-label="Select department">State *</label>
+            <DropDown
+              data={ListState}
+              selectedItem={state}
+              setSelectedItem={setState}
             />
             {errors.state && <p className="error">{errors.state}</p>}
           </div>
-          <div>
+          <div className="form_group_control">
             <label htmlFor="zip">Zip code *</label>
             <input
-              type="text"
+              type="number"
               id="zip"
               name="zip"
               onChange={handleInputChange}
@@ -231,7 +232,17 @@ const Form = () => {
           </div>
         </div>
       </fieldset>
-      <DropDown />
+      <div className="drop">
+        <fieldset>
+          <legend className="form_legend">Department</legend>
+          <DropDown
+            data={ListDepartment}
+            selectedItem={department}
+            setSelectedItem={setDepartment}
+          />
+          {errors.department && <p className="error">{errors.department}</p>}
+        </fieldset>
+      </div>
       <button type="submit" className="form_btn">
         <FontAwesomeIcon icon={faFloppyDisk} />
         <span>Save</span>

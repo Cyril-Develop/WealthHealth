@@ -1,17 +1,21 @@
 @mixin btn {
   padding: 10px 20px;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-size: clamp(1.8rem, 2vw, 2rem);
   font-weight: bold;
-  margin: 0 auto;
-  letter-spacing: .1rem;
+  margin-left: auto;
+  letter-spacing: 0.1rem;
   color: $color-secondary;
   background-color: $color-light;
   border: 1px solid $color-dark;
   cursor: pointer;
   &:hover {
-    color: $color-primary;
+    color: $color-light;
     background-color: $color-secondary;
+  }
+
+  @include medium-screen {
+    margin: 0 auto;
   }
 }
 

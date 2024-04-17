@@ -6,10 +6,26 @@
   width: 100%;
   max-width: 80rem;
 
+  .drop {
+    @include flex(column, null, null, 1rem);
+    width: 100%;
+
+    fieldset {
+      width: 50%;
+
+      @include medium-screen {
+        width: 100%;
+      }
+    }
+  }
   &_group {
     @include flex(row, null, null, 2rem);
     width: 100%;
-    div {
+
+    @include medium-screen {
+      @include flex(column, null, null, 1rem);
+    }
+    &_control {
       @include flex(column, null, null, 1rem);
       width: 100%;
 
@@ -22,9 +38,9 @@
         font-size: clamp(1.8rem, 1.8vw, 1.8rem);
       }
     }
-    label {
-      font-size: clamp(1.8rem, 2vw, 2rem);
-    }
+  }
+  label {
+    font-size: clamp(1.8rem, 2vw, 2rem);
   }
   fieldset {
     @include flex(column, null, null, 2rem);
@@ -40,7 +56,7 @@
     @include flex(row, null, null, 1rem);
     @include btn;
   }
-  .error{
+  .error {
     color: $color-error;
     font-weight: 600;
     font-size: clamp(1.6rem, 1.6vw, 1.6rem);

@@ -1,4 +1,4 @@
-![formation](./assets/openClassRooms.png)
+![formation](./doc/openClassRooms.png)
 
 # Formation Développeur d'application - JavaScript React
 
