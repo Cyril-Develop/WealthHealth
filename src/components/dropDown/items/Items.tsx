@@ -1,14 +1,11 @@
+import { ItemsProps } from "../../../types/types";
+
 const Items = ({
   listItems,
   selectedItem,
   setSelectedItem,
   setIsOpen,
-}: {
-  listItems: { name: string }[];
-  selectedItem: string;
-  setSelectedItem: (item: string) => void;
-  setIsOpen: (isOpen: boolean) => void;
-}) => {
+}: ItemsProps) => {
   const selectItemAndClose = (item: string) => {
     setSelectedItem(item);
     setIsOpen(false);

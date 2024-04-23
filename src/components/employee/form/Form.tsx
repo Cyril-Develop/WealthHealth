@@ -6,11 +6,17 @@ import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import DropDown from "../../dropDown/DropDown";
 import ListDepartment from "../../../data/list.department";
 import ListState from "../../../data/list.state";
+import { FormErrors } from "../../../types/interfaces";
+import { useEmployeeStore } from "../../../store/employee.store";
+import { Employee } from "../../../types/interfaces";
 
 const Form = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const [state, setState] = useState("");
   const [department, setDepartment] = useState("");
+
+  //Store
+  const { addEmployee } = useEmployeeStore(); 
 
   const closeModal = () => {
     setToggleModal(false);
@@ -40,18 +46,6 @@ const Form = () => {
       ...formData,
       [name]: value,
     });
-  };
-
-  type FormErrors = {
-    firstname?: string;
-    lastname?: string;
-    dateBirth?: string;
-    startDate?: string;
-    street?: string;
-    city?: string;
-    state?: string;
-    zip?: string;
-    department?: string;
   };
 
   const validateForm = () => {
@@ -115,10 +109,23 @@ const Form = () => {
     return isValid;
   };
 
+  const currentEmployee : Employee = {
+    firstname: formData.firstname,
+    lastname: formData.lastname,
+    dateBirth: formData.dateBirth,
+    startDate: formData.startDate,
+    street: formData.street,
+    city: formData.city,
+    state: state,
+    zip: formData.zip,
+    department: department,
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (validateForm()) {
+      addEmployee(currentEmployee);
       setFormData(initialFormState);
       setState("");
       setDepartment("");

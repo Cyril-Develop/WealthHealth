@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Items from "./items/Items";
 import { useState } from "react";
+import { DropDownProps } from "../../types/types";
 
-const DropDown = ({ data, selectedItem, setSelectedItem }: { data: { name: string }[], selectedItem: string, setSelectedItem: (item: string) => void }) => {
+const DropDown = ({ data, selectedItem, setSelectedItem }: DropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
