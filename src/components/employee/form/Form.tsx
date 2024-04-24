@@ -15,14 +15,12 @@ const Form = () => {
   const [state, setState] = useState("");
   const [department, setDepartment] = useState("");
 
-  //Store
-  const { addEmployee } = useEmployeeStore(); 
+  const addEmployee = useEmployeeStore((s) => s.addEmployee);
 
   const closeModal = () => {
     setToggleModal(false);
   };
 
-  //****************Form Validation****************//
   const initialFormState = {
     firstname: "",
     lastname: "",
@@ -52,51 +50,26 @@ const Form = () => {
     let isValid = true;
     const newErrors: FormErrors = {};
 
-    // Validate first name
-    if (!formData.firstname) {
-      newErrors.firstname = "Firstname is required";
-      isValid = false;
-    }
+    const validations = [
+      { field: "firstname", message: "Firstname is required" },
+      { field: "lastname", message: "Lastname is required" },
+      { field: "dateBirth", message: "Date of Birth is required" },
+      { field: "startDate", message: "Start Date is required" },
+      { field: "street", message: "Street is required" },
+      { field: "city", message: "City is required" },
+      { field: "zip", message: "Zip is required" },
+    ];
 
-    // Validate last name
-    if (!formData.lastname) {
-      newErrors.lastname = "Lastname is required";
-      isValid = false;
-    }
+    validations.forEach((validation) => {
+      if (!formData[validation.field as keyof typeof formData]) {
+        newErrors[validation.field as keyof typeof newErrors] =
+          validation.message;
+        isValid = false;
+      }
+    });
 
-    // Validate date of birth
-    if (!formData.dateBirth) {
-      newErrors.dateBirth = "Date of Birth is required";
-      isValid = false;
-    }
-
-    // Validate start date
-    if (!formData.startDate) {
-      newErrors.startDate = "Start Date is required";
-      isValid = false;
-    }
-
-    // Validate street
-    if (!formData.street) {
-      newErrors.street = "Street is required";
-      isValid = false;
-    }
-
-    // Validate city
-    if (!formData.city) {
-      newErrors.city = "City is required";
-      isValid = false;
-    }
-
-    // Validate state
     if (!state) {
       newErrors.state = "State is required";
-      isValid = false;
-    }
-
-    // Validate zip
-    if (!formData.zip) {
-      newErrors.zip = "Zip is required";
       isValid = false;
     }
 
@@ -109,7 +82,7 @@ const Form = () => {
     return isValid;
   };
 
-  const currentEmployee : Employee = {
+  const currentEmployee: Employee = {
     firstname: formData.firstname,
     lastname: formData.lastname,
     dateBirth: formData.dateBirth,
