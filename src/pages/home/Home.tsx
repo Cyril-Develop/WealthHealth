@@ -1,12 +1,12 @@
-import './home.scss';
-import Form from '../../components/employee/form/Form'
+import Form from "../../components/form/Form";
+import "./home.scss";
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div className="home">
       <Form />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,14 +1,13 @@
-import "./form.scss";
-import Modal from "../../modal/Modal";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
-import DropDown from "../../dropDown/DropDown";
-import ListDepartment from "../../../data/list.department";
-import ListState from "../../../data/list.state";
-import { FormErrors } from "../../../types/interfaces";
-import { useEmployeeStore } from "../../../store/employee.store";
-import { Employee } from "../../../types/interfaces";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import ListDepartment from "../../data/list.department";
+import ListState from "../../data/list.state";
+import { useEmployeeStore } from "../../store/employee.store";
+import { Employee, FormErrors } from "../../types/interfaces";
+import DropDown from "../dropDown/DropDown";
+import Modal from "../modal/Modal";
+import "./form.scss";
 
 const Form = () => {
   const [toggleModal, setToggleModal] = useState(false);
@@ -40,10 +39,13 @@ const Form = () => {
   }) => {
     const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if(name === "startDate" || name === "dateBirth"){
+      const formattedDate = new Date(value).toLocaleDateString('fr-FR');
+      setFormData({ ...formData, [name]: formattedDate });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+
   };
 
   const validateForm = () => {

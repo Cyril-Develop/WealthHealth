@@ -1,9 +1,12 @@
-import './employees.scss'
+import DataTable from "../../components/dataTable/DataTable";
+import "./employees.scss";
 
 const Employees = () => {
   return (
-    <div>Employees</div>
-  )
-}
+    <div className="employees">
+      <DataTable />
+    </div>
+  );
+};
 
-export default Employees
+export default Employees;
