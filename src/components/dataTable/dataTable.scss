@@ -8,6 +8,8 @@
   max-width: 1600px;
 
   &_header {
+    display: flex;
+    justify-content: space-between;
     &_length {
       label {
         display: flex;
@@ -15,6 +17,9 @@
         gap: 0.5rem;
         font-size: clamp(1.6rem, 1.6vw, 1.6rem);
       }
+    }
+    &_search{
+      margin-left: auto;
     }
   }
 

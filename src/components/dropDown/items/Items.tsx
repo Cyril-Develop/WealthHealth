@@ -12,7 +12,7 @@ const Items = ({
   };
 
   type ItemType = {
-    name: string;
+    name: string | number;
   };
 
   return (
@@ -23,7 +23,7 @@ const Items = ({
             <li
               className="dropDown_content_item"
               key={index}
-              onClick={() => selectItemAndClose(item.name)}
+              onClick={() => selectItemAndClose(String(item.name))}
             >
               {item.name}
             </li>

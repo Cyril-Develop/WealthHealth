@@ -39,13 +39,7 @@ const Form = () => {
   }) => {
     const { name, value } = e.target;
 
-    if(name === "startDate" || name === "dateBirth"){
-      const formattedDate = new Date(value).toLocaleDateString('fr-FR');
-      setFormData({ ...formData, [name]: formattedDate });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-
+    setFormData({ ...formData, [name]: value });
   };
 
   const validateForm = () => {
@@ -87,8 +81,8 @@ const Form = () => {
   const currentEmployee: Employee = {
     firstname: formData.firstname,
     lastname: formData.lastname,
-    dateBirth: formData.dateBirth,
-    startDate: formData.startDate,
+    dateBirth: new Date(formData.dateBirth).toLocaleDateString("fr-FR"),
+    startDate: new Date(formData.startDate).toLocaleDateString("fr-FR"),
     street: formData.street,
     city: formData.city,
     state: state,

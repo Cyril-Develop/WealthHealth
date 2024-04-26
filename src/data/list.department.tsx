@@ -1,4 +1,4 @@
-const listItems: { name: string }[] = [
+const listItems: { name: string}[] = [
   {
     name: "Sales",
   },

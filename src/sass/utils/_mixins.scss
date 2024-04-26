@@ -9,9 +9,14 @@
   background-color: $color-light;
   border: 1px solid $color-dark;
   cursor: pointer;
-  &:hover {
+
+  &:hover:not(:disabled) {
     color: $color-light;
     background-color: $color-secondary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   @include medium-screen {
