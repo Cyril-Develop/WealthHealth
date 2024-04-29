@@ -3,10 +3,14 @@ import { useEmployeeStore } from "../../store/employee.store";
 import "./dataTable.scss";
 import { Search } from "../search/Search";
 import { Employee } from "../../types/interfaces";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
-  const [entries, setEntries] = useState(10);
+  const [entries, setEntries] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState<Employee[]>();
 
@@ -118,17 +122,33 @@ const DataTable = () => {
             <p>{renderEntryInfo()}</p>
           </div>
           <div className="dataTable_footer_btn">
-            <button onClick={firstPage} disabled={currentPage === 1}>
+            <button
+              onClick={firstPage}
+              className={currentPage === 1 ? "disable" : ""}
+              disabled={currentPage === 1}
+            >
               First
             </button>
-            <button onClick={prevPage} disabled={currentPage === 1}>
-              {"<"}
+            <button
+              onClick={prevPage}
+              className={currentPage === 1 ? "disable" : ""}
+              disabled={currentPage === 1}
+            >
+              <FontAwesomeIcon icon={faArrowLeft} />
             </button>
 
-            <button onClick={nextPage} disabled={currentPage === numberOfPages}>
-              {">"}
+            <button
+              onClick={nextPage}
+              className={currentPage === numberOfPages ? "disable" : ""}
+              disabled={currentPage === numberOfPages}
+            >
+              <FontAwesomeIcon icon={faArrowRight} />
             </button>
-            <button onClick={lastPage} disabled={currentPage === numberOfPages}>
+            <button
+              onClick={lastPage}
+              className={currentPage === numberOfPages ? "disable" : ""}
+              disabled={currentPage === numberOfPages}
+            >
               Last
             </button>
           </div>
