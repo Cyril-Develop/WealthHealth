@@ -1,66 +1,75 @@
+import React, { useState, useEffect } from "react";
 import { useEmployeeStore } from "../../store/employee.store";
 import "./dataTable.scss";
-import { useState } from "react";
 import { Search } from "../search/Search";
 import { Employee } from "../../types/interfaces";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
   const [entries, setEntries] = useState(10);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState<Employee[]>();
 
-  const start = (page - 1) * entries;
+  const start = (currentPage - 1) * entries;
   const end = start + entries;
-  const entriesToShow = employees.slice(start, end);
-  const numberOfPages = Math.round(employees.length / entries);
 
-  const [search, setSearch] = useState<Employee[]>([]);
+  const entriesToShow = search
+    ? search.slice(start, end)
+    : employees.slice(start, end);
+  const totalEntries = search ? search.length : employees.length;
+  const numberOfPages = Math.ceil(totalEntries / entries);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   const handleEntriesChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEntries(parseInt(e.target.value));
-    setPage(1);
+    setCurrentPage(1);
   };
 
   const nextPage = () => {
-    setPage(page + 1);
+    setCurrentPage(currentPage + 1);
   };
 
   const prevPage = () => {
-    setPage(page - 1);
+    setCurrentPage(currentPage - 1);
   };
 
   const lastPage = () => {
-    setPage(numberOfPages);
+    setCurrentPage(numberOfPages);
   };
 
   const firstPage = () => {
-    setPage(1);
+    setCurrentPage(1);
   };
 
-  const datas = search ? search : entriesToShow;
-  const dataNotFound = search && datas.length === 0;
+  const renderEntryInfo = () => {
+    const endEntry = Math.min(end, totalEntries);
+    return `Showing ${start + 1} to ${endEntry} of ${totalEntries} entries`;
+  };
+
+  const isDataNotFound = search && entriesToShow.length === 0;
 
   return (
     <div className="dataTable">
       <div className="dataTable_header">
-        {!dataNotFound && (
+        {!isDataNotFound && (
           <div className="dataTable_header_length">
-            {
-              <label htmlFor="entries">
-                Show
-                <select
-                  name="entries"
-                  id="entries"
-                  onChange={handleEntriesChange}
-                >
-                  <option value="2">2</option>
-                  <option value="4">4</option>
-                  <option value="7">7</option>
-                  <option value="10">10</option>
-                </select>
-                entries
-              </label>
-            }
+            <label htmlFor="entries">
+              Show
+              <select
+                name="entries"
+                id="entries"
+                onChange={handleEntriesChange}
+              >
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="7">7</option>
+                <option value="10">10</option>
+              </select>
+              entries
+            </label>
           </div>
         )}
         <div className="dataTable_header_search">
@@ -82,12 +91,12 @@ const DataTable = () => {
           </tr>
         </thead>
         <tbody>
-          {dataNotFound ? (
+          {isDataNotFound ? (
             <tr>
               <td colSpan={9}>No results found</td>
             </tr>
           ) : (
-            datas.map((entry, index) => (
+            entriesToShow.map((entry, index) => (
               <tr key={index}>
                 <td scope="row">{entry.firstname}</td>
                 <td scope="row">{entry.lastname}</td>
@@ -103,34 +112,24 @@ const DataTable = () => {
           )}
         </tbody>
       </table>
-      {!dataNotFound && (
+      {!isDataNotFound && (
         <div className="dataTable_footer">
           <div className="dataTable_footer_infos">
-            <p>
-              Showing {start + 1} to{" "}
-              {end > employees.length ? employees.length : end} of{" "}
-              {employees.length} entries
-            </p>
+            <p>{renderEntryInfo()}</p>
           </div>
           <div className="dataTable_footer_btn">
-            <button onClick={prevPage} disabled={page === 1}>
-              Previous
-            </button>
-            <button onClick={firstPage} disabled={page === 1}>
+            <button onClick={firstPage} disabled={currentPage === 1}>
               First
             </button>
-
-            {Array.from({ length: numberOfPages }, (_, i) => (
-              <button key={i} onClick={() => setPage(i + 1)}>
-                {i + 1}
-              </button>
-            ))}
-
-            <button onClick={lastPage} disabled={end >= employees.length}>
-              Last
+            <button onClick={prevPage} disabled={currentPage === 1}>
+              {"<"}
             </button>
-            <button onClick={nextPage} disabled={end >= employees.length}>
-              Next
+
+            <button onClick={nextPage} disabled={currentPage === numberOfPages}>
+              {">"}
+            </button>
+            <button onClick={lastPage} disabled={currentPage === numberOfPages}>
+              Last
             </button>
           </div>
         </div>

@@ -10,7 +10,6 @@ export const Search = ({ setSearch }: SearchProps) => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value;
-    console.log(typeof search);
 
     const filteredEmployees = employees.filter((employee) => {
       return Object.values(employee).some((value) => {
