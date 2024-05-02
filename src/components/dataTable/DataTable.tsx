@@ -6,7 +6,8 @@ import { Employee } from "../../types/interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import TableMobile from "../table/TableMobile";
+import TableRegular from "../table/TableRegular";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
@@ -54,6 +55,7 @@ const DataTable = () => {
   };
 
   const isDataNotFound = search && entriesToShow.length === 0;
+  const screenWidth = window.innerWidth;
 
   return (
     <div className="dataTable">
@@ -80,42 +82,13 @@ const DataTable = () => {
           <Search setSearch={setSearch} />
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th scope="row">First Name</th>
-            <th scope="row">Last Name</th>
-            <th scope="row">Start Date</th>
-            <th scope="row">Department</th>
-            <th scope="row">Date of Birth</th>
-            <th scope="row">Street</th>
-            <th scope="row">City</th>
-            <th scope="row">State</th>
-            <th scope="row">Zip Code</th>
-          </tr>
-        </thead>
-        <tbody>
-          {isDataNotFound ? (
-            <tr>
-              <td colSpan={9}>No results found</td>
-            </tr>
-          ) : (
-            entriesToShow.map((entry, index) => (
-              <tr key={index}>
-                <td scope="row">{entry.firstname}</td>
-                <td scope="row">{entry.lastname}</td>
-                <td scope="row">{entry.startDate}</td>
-                <td scope="row">{entry.department}</td>
-                <td scope="row">{entry.dateBirth}</td>
-                <td scope="row">{entry.street}</td>
-                <td scope="row">{entry.city}</td>
-                <td scope="row">{entry.state}</td>
-                <td scope="row">{entry.zip}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      {isDataNotFound ? (
+        <div className="dataTable_notFound">No results found</div>
+      ) : screenWidth >= 3000 ? (
+        <TableRegular entriesToShow={entriesToShow} />
+      ) : (
+        <TableMobile entriesToShow={entriesToShow} />
+      )}
       {!isDataNotFound && (
         <div className="dataTable_footer">
           <div className="dataTable_footer_infos">

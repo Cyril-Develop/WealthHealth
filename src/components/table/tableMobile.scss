@@ -1,0 +1,37 @@
+@import "../../sass/main.scss";
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  letter-spacing: 1px;
+  text-align: left;
+  width: 100%;
+  border: 1px solid $color-dark;
+
+  &_group {
+    display: flex;
+    font-size: clamp(1.8rem, 2vw, 2rem);
+    height: 4rem;
+    line-height: 4rem;
+
+    &_title {
+      padding: 0 1rem;
+      flex: 1;
+      background-color: $color-secondary;
+      color: $color-light;
+      border-bottom: 1px solid $color-light;
+    }
+
+    &:last-child .table_group_title,
+    &:last-child .table_group_value {
+      border-bottom: none;
+    }
+
+    &_value {
+      padding: 0 1rem;
+      flex: 1;
+      border-bottom: 1px solid $color-dark;
+    }
+  }
+}

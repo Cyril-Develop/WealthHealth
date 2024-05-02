@@ -5,7 +5,14 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
-  max-width: 1600px;
+
+  &_notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    font-size: clamp(1.8rem, 2vw, 2rem);
+  }
 
   &_header {
     display: flex;
@@ -28,47 +35,6 @@
         border: 1px solid $color-dark;
         border-radius: 0.5rem;
         font-size: clamp(1.8rem, 1.8vw, 1.8rem);
-      }
-    }
-  }
-
-  table {
-    border-collapse: collapse;
-    letter-spacing: 1px;
-    text-align: left;
-    width: 100%;
-
-    thead,
-    tfoot {
-      background-color: $color-secondary;
-      color: $color-light;
-      font-size: clamp(1.8rem, 2vw, 2rem);
-    }
-
-    th,
-    td {
-      border: 1px solid $color-dark;
-      height: 4rem;
-      padding: 0 1rem;
-    }
-
-    thead {
-      tr {
-        font-size: clamp(1.8rem, 2vw, 2rem);
-      }
-    }
-
-    tbody {
-      tr {
-        font-size: clamp(1.8rem, 1.8vw, 1.8rem);
-      }
-
-      & > tr:nth-of-type(even) {
-        background-color: rgba(160, 160, 160, 0.225);
-      }
-      & > tr:hover {
-        background-color: #157847bd;
-        color: $color-light;
       }
     }
   }
