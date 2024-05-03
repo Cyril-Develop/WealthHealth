@@ -6,6 +6,10 @@
   width: 100%;
   max-width: 80rem;
 
+  @include medium-screen {
+    gap: 1.5rem;
+  }
+
   .drop {
     @include flex(column, null, null, 1rem);
     width: 100%;

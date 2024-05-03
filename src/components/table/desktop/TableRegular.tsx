@@ -2,6 +2,7 @@ import "./tableRegular.scss";
 import { Employee } from "../../../types/interfaces";
 
 const TableRegular = ({ entriesToShow }: { entriesToShow: Employee[] }) => {
+
   return (
     <div className="table">
       <div className="table_header">

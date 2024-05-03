@@ -1,13 +1,7 @@
 @import "../../../sass/main.scss";
 
 .table {
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  letter-spacing: 1px;
-  text-align: left;
-  width: 100%;
-  border: 1px solid $color-dark;
+  @include table;
 
   &_group {
     display: flex;

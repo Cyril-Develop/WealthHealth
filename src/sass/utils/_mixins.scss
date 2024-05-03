@@ -3,7 +3,7 @@
   border-radius: 0.5rem;
   font-size: clamp(1.8rem, 2vw, 2rem);
   font-weight: bold;
-  margin: 0  auto;
+  margin: 0 auto;
   letter-spacing: 0.1rem;
   color: $color-secondary;
   background-color: $color-light;
@@ -38,4 +38,23 @@
   @if $gap != null {
     gap: $gap;
   }
+}
+
+@mixin page {
+  @include flex(row, center, null, null);
+  padding: 4rem;
+  min-height: calc(100vh - 10rem);
+
+  @include small-screen {
+    padding: 2rem 1rem;
+  }
+}
+
+@mixin table {
+  @include flex(column, null, null, null);
+  border-radius: 0.5rem;
+  letter-spacing: 1px;
+  text-align: left;
+  width: 100%;
+  border: 1px solid $color-dark;
 }

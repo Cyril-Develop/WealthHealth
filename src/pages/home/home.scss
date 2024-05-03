@@ -1,12 +1,5 @@
 @import "../../sass/main.scss";
 
 .home {
-  //direction, justify, align, gap
-  @include flex(row, center, null, null);
-  padding: 4rem;
-  min-height: calc(100vh - 10rem);
-
-  @include small-screen {
-    padding: 2rem 1rem;
-  }
+  @include page;
 }
