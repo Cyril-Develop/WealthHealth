@@ -6,8 +6,8 @@ import { Employee } from "../../types/interfaces";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import TableMobile from "../table/TableMobile";
-import TableRegular from "../table/TableRegular";
+import TableMobile from "../table/mobile/TableMobile";
+import TableRegular from "../table/desktop/TableRegular";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
@@ -84,7 +84,7 @@ const DataTable = () => {
       </div>
       {isDataNotFound ? (
         <div className="dataTable_notFound">No results found</div>
-      ) : screenWidth >= 3000 ? (
+      ) : screenWidth >= 1580 ? (
         <TableRegular entriesToShow={entriesToShow} />
       ) : (
         <TableMobile entriesToShow={entriesToShow} />

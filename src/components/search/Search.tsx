@@ -19,5 +19,5 @@ export const Search = ({ setSearch }: SearchProps) => {
     setSearch(filteredEmployees);
   };
 
-  return <input type="text" onChange={(e) => handleSearch(e)} />;
+  return <input type="text" onChange={(e) => handleSearch(e)} placeholder="Search..." />;
 };

@@ -1,4 +1,4 @@
-@import "../../sass/main.scss";
+@import "../../../sass/main.scss";
 
 .table {
   display: flex;
@@ -22,9 +22,7 @@
       background-color: $color-secondary;
       color: $color-light;
       font-size: clamp(1.8rem, 2vw, 2rem);
-      height: 4rem;
-      line-height: 4rem;
-      padding: 0 1rem;
+      padding: 1rem;
       border-right: 1px solid $color-light;
     }
   }
@@ -32,6 +30,7 @@
   &_body {
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     border-top: 1px solid $color-dark;
 
     &_cell:nth-last-child(1) {
@@ -40,9 +39,7 @@
 
     &_cell {
       flex: 1;
-      height: 4rem;
-      padding: 0 1rem;
-      line-height: 4rem;
+      padding: 1rem;
       font-size: clamp(1.8rem, 2vw, 2rem);
       border-right: 1px solid $color-dark;
     }
