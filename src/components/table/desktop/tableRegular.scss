@@ -1,7 +1,8 @@
 @import "../../../sass/main.scss";
 
 .table {
-  @include table;
+  //@include table;
+  display: grid;
 
   &_header {
     //direction, justify, align, gap

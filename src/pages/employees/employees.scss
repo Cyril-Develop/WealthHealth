@@ -2,4 +2,8 @@
 
 .employees{
   @include page;
+
+  &_empty{
+    font-size: clamp(1.8rem, 1.8vw, 1.8rem);
+  }
 }

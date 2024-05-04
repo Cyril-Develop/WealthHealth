@@ -11,7 +11,7 @@ import TableRegular from "../table/desktop/TableRegular";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
-  const [entries, setEntries] = useState(2);
+  const [entries, setEntries] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState<Employee[]>();
 
@@ -69,10 +69,10 @@ const DataTable = () => {
                 id="entries"
                 onChange={handleEntriesChange}
               >
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="7">7</option>
+                <option value="5">5</option>
                 <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
               </select>
               entries
             </label>
@@ -91,9 +91,7 @@ const DataTable = () => {
       )}
       {!isDataNotFound && (
         <div className="dataTable_footer">
-          <div className="dataTable_footer_infos">
-            <p>{renderEntryInfo()}</p>
-          </div>
+          <div className="dataTable_footer_infos">{renderEntryInfo()}</div>
           <div className="dataTable_footer_btn">
             <button
               onClick={firstPage}
