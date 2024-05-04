@@ -11,8 +11,6 @@ export const Search = ({ setSearch }: SearchProps) => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value;
 
-    if (search.length < 3) return;
-
     const filteredEmployees = employees.filter((employee) => {
       return Object.values(employee).some((value) => {
         return value.toString().toLowerCase().includes(search.toLowerCase());

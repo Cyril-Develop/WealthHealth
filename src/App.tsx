@@ -21,7 +21,7 @@ function App() {
       element: <Layout><Outlet /></Layout>,
       children: [
         { path: "/WealthHealth/", element: <Home /> },
-        { path: "/WealthHealth/employees", element: <Employees /> }
+        { path: "/WealthHealth/employees/", element: <Employees /> }
       ]
     }
   ])
