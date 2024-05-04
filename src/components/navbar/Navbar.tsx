@@ -7,19 +7,19 @@ import { faPlus, faList } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Link to="/">
+      <Link to="/WealthHealth/">
         <img src={Logo} alt="Logo - HRnet" />
         <h1>HRnet</h1>
       </Link>
       <ul>
         <li>
-          <Link to="/">
+          <Link to="/WealthHealth/">
             <FontAwesomeIcon icon={faPlus} />
             <span>Add employee</span>
           </Link>
         </li>
         <li>
-          <Link to="/employees">
+          <Link to="/WealthHealth/employees/">
             <FontAwesomeIcon icon={faList} />
             <span>Current employees</span>
           </Link>

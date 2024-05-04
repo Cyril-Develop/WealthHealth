@@ -17,11 +17,11 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/WealthHealth/",
       element: <Layout><Outlet /></Layout>,
       children: [
-        { path: "/", element: <Home /> },
-        { path: "/employees", element: <Employees /> }
+        { path: "/WealthHealth/", element: <Home /> },
+        { path: "/WealthHealth/employees", element: <Employees /> }
       ]
     }
   ])
