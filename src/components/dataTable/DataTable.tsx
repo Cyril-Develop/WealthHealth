@@ -24,6 +24,8 @@ const DataTable = () => {
   const totalEntries = search ? search.length : employees.length;
   const numberOfPages = Math.ceil(totalEntries / entries);
 
+  console.log(numberOfPages);
+
   useEffect(() => {
     setCurrentPage(1);
   }, [search]);
@@ -123,6 +125,9 @@ const DataTable = () => {
               Last
             </button>
           </div>
+          <span className="dataTable_footer_currentPage">
+            Page {currentPage} / {numberOfPages}
+          </span>
         </div>
       )}
     </div>
