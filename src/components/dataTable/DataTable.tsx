@@ -24,8 +24,6 @@ const DataTable = () => {
   const totalEntries = search ? search.length : employees.length;
   const numberOfPages = Math.ceil(totalEntries / entries);
 
-  console.log(numberOfPages);
-
   useEffect(() => {
     setCurrentPage(1);
   }, [search]);
