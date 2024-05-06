@@ -24,6 +24,7 @@ export const Search = ({ setSearch }: SearchProps) => {
       type="text"
       onChange={(e) => handleSearch(e)}
       placeholder="Search..."
+      aria-label="Search employees"
     />
   );
 };

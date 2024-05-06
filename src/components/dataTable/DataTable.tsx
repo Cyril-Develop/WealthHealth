@@ -104,6 +104,7 @@ const DataTable = () => {
               onClick={prevPage}
               className={currentPage === 1 ? "disable" : ""}
               disabled={currentPage === 1}
+              aria-label="Previous page"
             >
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
@@ -112,6 +113,7 @@ const DataTable = () => {
               onClick={nextPage}
               className={currentPage === numberOfPages ? "disable" : ""}
               disabled={currentPage === numberOfPages}
+              aria-label="Next page"
             >
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
