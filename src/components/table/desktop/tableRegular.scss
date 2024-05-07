@@ -18,6 +18,7 @@
       color: $color-light;
       font-size: clamp(1.8rem, 2vw, 2rem);
       padding: 1rem;
+      text-transform: capitalize;
       border-right: 1px solid $color-light;
     }
   }
@@ -34,6 +35,7 @@
 
     &_cell {
       flex: 1;
+      @include flex(row, null, center, null);
       padding: 1rem;
       font-size: clamp(1.8rem, 2vw, 2rem);
       border-right: 1px solid $color-dark;

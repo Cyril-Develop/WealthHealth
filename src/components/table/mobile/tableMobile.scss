@@ -8,10 +8,12 @@
     flex-wrap: wrap;
 
     &_title {
+      @include flex(row, null, center, null);
       padding: 1rem;
       width: 50%;
       background-color: $color-secondary;
       color: $color-light;
+      text-transform: capitalize;
       border-bottom: 1px solid $color-light;
       font-size: clamp(1.8rem, 2vw, 2rem);
     }
@@ -22,6 +24,7 @@
     }
 
     &_value {
+      @include flex(row, null, center, null);
       padding: 1rem;
       width: 50%;
       font-size: clamp(1.6rem, 2vw, 2rem);

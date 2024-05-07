@@ -64,18 +64,5 @@
       align-items: center;
       gap: 1rem;
     }
-
-    &_btn {
-      display: flex;
-      gap: 1rem;
-      button {
-        @include btn;
-      }
-    }
-  }
-
-  .disable {
-    background-color: rgba(160, 160, 160, 0.225);
-    color: grey;
   }
 }

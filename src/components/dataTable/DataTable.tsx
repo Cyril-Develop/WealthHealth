@@ -3,15 +3,13 @@ import { useEmployeeStore } from "../../store/employee.store";
 import "./dataTable.scss";
 import { Search } from "../search/Search";
 import { Employee } from "../../types/interfaces";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import TableMobile from "../table/mobile/TableMobile";
 import TableRegular from "../table/desktop/TableRegular";
+import Pagination from "../paging/Paging";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
-  const [entries, setEntries] = useState(5);
+  const [entries, setEntries] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState<Employee[]>();
 
@@ -30,22 +28,6 @@ const DataTable = () => {
 
   const handleEntriesChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEntries(parseInt(e.target.value));
-    setCurrentPage(1);
-  };
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const prevPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
-  const lastPage = () => {
-    setCurrentPage(numberOfPages);
-  };
-
-  const firstPage = () => {
     setCurrentPage(1);
   };
 
@@ -69,7 +51,7 @@ const DataTable = () => {
                 id="entries"
                 onChange={handleEntriesChange}
               >
-                <option value="5">5</option>
+                <option value="2">2</option>
                 <option value="10">10</option>
                 <option value="15">15</option>
                 <option value="30">30</option>
@@ -92,42 +74,13 @@ const DataTable = () => {
       {!isDataNotFound && (
         <div className="dataTable_footer">
           <div className="dataTable_footer_infos">{renderEntryInfo()}</div>
-          <div className="dataTable_footer_btn">
-            <button
-              onClick={firstPage}
-              className={currentPage === 1 ? "disable" : ""}
-              disabled={currentPage === 1}
-            >
-              First
-            </button>
-            <button
-              onClick={prevPage}
-              className={currentPage === 1 ? "disable" : ""}
-              disabled={currentPage === 1}
-              aria-label="Previous page"
-            >
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
-
-            <button
-              onClick={nextPage}
-              className={currentPage === numberOfPages ? "disable" : ""}
-              disabled={currentPage === numberOfPages}
-              aria-label="Next page"
-            >
-              <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-            <button
-              onClick={lastPage}
-              className={currentPage === numberOfPages ? "disable" : ""}
-              disabled={currentPage === numberOfPages}
-            >
-              Last
-            </button>
+          <div className="dataTable_footer_pagination">
+            <Pagination
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              numberOfPages={numberOfPages}
+            />
           </div>
-          <span className="dataTable_footer_currentPage">
-            Page {currentPage} / {numberOfPages}
-          </span>
         </div>
       )}
     </div>
