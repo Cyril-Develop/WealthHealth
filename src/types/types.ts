@@ -15,7 +15,7 @@ export type ButtonTableProps = {
   key?: number;
   updatePage: () => void;
   disabled: boolean;
-  label: string;
+  label: string | JSX.Element;
 };
 
 export type PagingProps = {

@@ -1,5 +1,8 @@
 import { PagingProps } from "../../types/types";
 import ButtonTable from "../buttonTable/ButtonTable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import "./paging.scss";
 
 const Paging = ({
@@ -26,7 +29,7 @@ const Paging = ({
           <ButtonTable
             updatePage={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
-            label="Previous"
+            label={<FontAwesomeIcon icon={faArrowLeft} />}
           />
         </>
       )}
@@ -48,7 +51,7 @@ const Paging = ({
           <ButtonTable
             updatePage={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === numberOfPages}
-            label="Next"
+            label={<FontAwesomeIcon icon={faArrowRight} />}
           />
 
           <ButtonTable
