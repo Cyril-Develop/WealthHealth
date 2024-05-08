@@ -13,8 +13,7 @@
   }
 
   a {
-    @include flex(row, null, center, null);
-    gap: 1rem;
+    @include flex(row, null, center, 1rem);
     font-weight: bold;
     font-size: clamp(1.8rem, 2vw, 2rem);
   }

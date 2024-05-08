@@ -6,6 +6,7 @@ import { Employee } from "../../types/interfaces";
 import TableMobile from "../table/mobile/TableMobile";
 import TableRegular from "../table/desktop/TableRegular";
 import Pagination from "../paging/Paging";
+import SelectEntries from "../selectEntries/SelectEntries";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);
@@ -43,21 +44,8 @@ const DataTable = () => {
     <div className="dataTable">
       <div className="dataTable_header">
         {!isDataNotFound && (
-          <div className="dataTable_header_length">
-            <label htmlFor="entries">
-              Show
-              <select
-                name="entries"
-                id="entries"
-                onChange={handleEntriesChange}
-              >
-                <option value="2">2</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-              </select>
-              entries
-            </label>
+          <div className="dataTable_header_entries">
+            <SelectEntries updateEntries={handleEntriesChange} />
           </div>
         )}
         <div className="dataTable_header_search">

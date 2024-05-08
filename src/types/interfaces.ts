@@ -26,3 +26,7 @@ export interface FormErrors {
   zip?: string;
   department?: string;
 }
+
+export interface SearchProps {
+  setSearch: (filteredEmployees: Employee[]) => void;
+}
