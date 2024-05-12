@@ -2,7 +2,6 @@ import { PagingProps } from "../../types/types";
 import ButtonTable from "../buttonTable/ButtonTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
 import "./paging.scss";
 
 const Paging = ({
