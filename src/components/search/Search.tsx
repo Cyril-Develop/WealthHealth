@@ -8,11 +8,11 @@ export const Search = ({ setSearch }: SearchProps) => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value;
 
-    const filteredEmployees = employees.filter((employee) => {
-      return Object.values(employee).some((value) => {
-        return value.toString().toLowerCase().includes(search.toLowerCase());
-      });
-    });
+    const filteredEmployees = employees.filter((employee) =>
+      Object.values(employee).some((value) =>
+        value.toString().toLowerCase().includes(search.toLowerCase())
+      )
+    );
     setSearch(filteredEmployees);
   };
 
