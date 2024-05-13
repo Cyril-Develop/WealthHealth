@@ -11,7 +11,6 @@ const ButtonTable = ({
       onClick={updatePage}
       className={disabled ? "disable" : ""}
       disabled={disabled}
-      aria-label={label}
     >
       {label}
     </button>
