@@ -1,5 +1,5 @@
 import "./tableRegular.scss";
-import { Employee } from "../../../types/interfaces";
+import { Employee } from "@customTypes/interfaces";
 
 const TableRegular = ({ entriesToShow }: { entriesToShow: Employee[] }) => {
 

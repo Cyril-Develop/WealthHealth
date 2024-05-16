@@ -1,6 +1,6 @@
-import DataTable from "../../components/dataTable/DataTable";
+import DataTable from "@components/dataTable/DataTable";
 import "./employees.scss";
-import { useEmployeeStore } from "../../store/employee.store";
+import { useEmployeeStore } from "@store/employee.store";
 
 const Employees = () => {
   const employees = useEmployeeStore((s) => s.employees);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useEmployeeStore } from "../../store/employee.store";
+import { useEmployeeStore } from "@store/employee.store";
 import "./dataTable.scss";
-import { Search } from "../search/Search";
-import { Employee } from "../../types/interfaces";
-import TableMobile from "../table/mobile/TableMobile";
-import TableRegular from "../table/desktop/TableRegular";
-import Pagination from "../paging/Paging";
-import SelectEntries from "../selectEntries/SelectEntries";
+import { Search } from "@components/search/Search";
+import { Employee } from "@customTypes/interfaces";
+import TableMobile from "@components/table/mobile/TableMobile";
+import TableRegular from "@components/table/desktop/TableRegular";
+import Pagination from "@components/paging/Paging";
+import SelectEntries from "@components/selectEntries/SelectEntries";
 
 const DataTable = () => {
   const employees = useEmployeeStore((s) => s.employees);

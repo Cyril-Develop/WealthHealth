@@ -1,5 +1,5 @@
 import "./selectEntries.scss";
-import { SelectEntriesProps } from "../../types/types";
+import { SelectEntriesProps } from "@customTypes/types";
 
 const SelectEntries = ({ updateEntries }: SelectEntriesProps) => {
   return (

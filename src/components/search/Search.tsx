@@ -1,6 +1,6 @@
-import { useEmployeeStore } from "../../store/employee.store";
+import { useEmployeeStore } from "@store/employee.store";
 import "./search.scss";
-import { SearchProps } from "../../types/interfaces";
+import { SearchProps } from "@customTypes/interfaces";
 
 export const Search = ({ setSearch }: SearchProps) => {
   const employees = useEmployeeStore((s) => s.employees);

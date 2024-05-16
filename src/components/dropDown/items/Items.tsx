@@ -1,4 +1,4 @@
-import { ItemsProps } from "../../../types/types";
+import { ItemsProps } from "@customTypes/types";
 
 const Items = ({
   listItems,

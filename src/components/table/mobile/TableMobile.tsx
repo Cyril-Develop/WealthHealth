@@ -1,5 +1,5 @@
 import "./tableMobile.scss";
-import { Employee } from "../../../types/interfaces";
+import { Employee } from "@customTypes/interfaces";
 
 const TableMobile = ({ entriesToShow }: { entriesToShow: Employee[] }) => {
   return (

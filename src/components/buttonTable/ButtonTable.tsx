@@ -1,5 +1,5 @@
 import "./buttonTable.scss";
-import { ButtonTableProps } from "../../types/types";
+import { ButtonTableProps } from "@customTypes/types";
 
 const ButtonTable = ({
   updatePage,

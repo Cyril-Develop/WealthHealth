@@ -1,12 +1,12 @@
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import ListDepartment from "../../data/list.department";
-import ListState from "../../data/list.state";
-import { useEmployeeStore } from "../../store/employee.store";
-import { Employee, FormErrors } from "../../types/interfaces";
-import DropDown from "../dropDown/DropDown";
-import Modal from "../modal/Modal";
+import ListDepartment from "@data/list.department";
+import ListState from "@data/list.state";
+import { useEmployeeStore } from "@store/employee.store";
+import { Employee, FormErrors } from "@customTypes/interfaces";
+import DropDown from "@components/dropDown/DropDown";
+import Modal from "@components/modal/Modal";
 import "./form.scss";
 
 const Form = () => {
