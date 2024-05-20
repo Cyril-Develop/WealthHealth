@@ -4,9 +4,9 @@
 
 ## 📎 Projet 14 : Wealth Health - Faites passer une librairie jQuery vers React
 
-![homepage](./doc/home.png)
+![homepage](./doc/screenshot/home.png)
 
-![employee](./doc/employee.png)
+![employee](./doc/screenshot/employee.png)
 
 ## Technologies :
 - REACT
