@@ -10,7 +10,7 @@ import "./form.scss";
 import { Modal } from "reactjs-custom-modal";
 
 const Form = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [state, setState] = useState("");
   const [department, setDepartment] = useState("");
 
