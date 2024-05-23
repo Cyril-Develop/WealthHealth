@@ -6,18 +6,18 @@ import ListState from "@data/list.state";
 import { useEmployeeStore } from "@store/employee.store";
 import { Employee, FormErrors } from "@customTypes/interfaces";
 import DropDown from "@components/dropDown/DropDown";
-import Modal from "@components/modal/Modal";
 import "./form.scss";
+import { Modal } from "reactjs-custom-modal";
 
 const Form = () => {
-  const [toggleModal, setToggleModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [state, setState] = useState("");
   const [department, setDepartment] = useState("");
 
   const addEmployee = useEmployeeStore((s) => s.addEmployee);
 
   const closeModal = () => {
-    setToggleModal(false);
+    setIsModalOpen(false);
   };
 
   const initialFormState = {
@@ -98,7 +98,7 @@ const Form = () => {
       setFormData(initialFormState);
       setState("");
       setDepartment("");
-      setToggleModal(true);
+      setIsModalOpen(true);
     }
   };
 
@@ -223,7 +223,18 @@ const Form = () => {
         <FontAwesomeIcon icon={faFloppyDisk} />
         <span>Save</span>
       </button>
-      {toggleModal && <Modal closeModal={closeModal} />}
+      {isModalOpen && (
+        <div style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
+          <Modal
+            text="Employee Created!"
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            textColor="#fff"
+            backgroundColor="#157846"
+            iconColor="red"
+          />
+        </div>
+      )}
     </form>
   );
 };
